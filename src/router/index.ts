@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Vue2 from '@/pages/Vue2.vue'
 import Vue3 from '@/pages/Vue3.vue'
@@ -6,7 +6,9 @@ import TsDemo from '@/pages/TsDemo.vue'
 import PropsDemo from '@/pages/PropsDemo.vue'
 
 export const router = createRouter({
-  history: createWebHistory(), // 使用 history 模式
+  // GitHub Pages 是純靜態站，history 模式在重新整理 / 直接輸入子路由時會 404
+  // 改用 hash 模式（URL 會長得像 /#/vue3）即可在 Pages 正常運作
+  history: createWebHashHistory(),
   routes: [
     {
       name: 'home', path: '/', redirect: '/vue3' },
